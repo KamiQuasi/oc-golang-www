@@ -24,8 +24,8 @@
 		"spec": {
 			"ports": [{
 				"name": "web",
-				"port": 8080,
-				"targetPort": 8080
+				"port": 4430,
+				"targetPort": 443
 			}],
 			"selector": {
 				"name": "go-web-go"
@@ -136,7 +136,7 @@
 						"name": "go-web-go",
 						"image": "go-web-go",
 						"ports": [{
-							"containerPort": 8080
+							"containerPort": 4430
 						}]
 					}]
 				}
@@ -155,7 +155,7 @@
 		"description": "Set this to the relative path to your project if it is not in the root of your repository"
 	}, {
 		"name": "APPLICATION_DOMAIN",
-		"description": "The exposed hostname that will route to the rhd-report service",
+		"description": "The exposed hostname that will route to the go-web-go service",
 		"value": "goweb"
 	}, {
 		"name": "GITHUB_WEBHOOK_SECRET",
