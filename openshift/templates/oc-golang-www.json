@@ -24,8 +24,8 @@
 		"spec": {
 			"ports": [{
 				"name": "web",
-				"port": 4430,
-				"targetPort": 443
+				"port": 8024,
+				"targetPort": 8024
 			}],
 			"selector": {
 				"name": "go-web-go"
@@ -136,7 +136,7 @@
 						"name": "go-web-go",
 						"image": "go-web-go",
 						"ports": [{
-							"containerPort": 4430
+							"containerPort": 8024
 						}]
 					}]
 				}

@@ -6,6 +6,8 @@ RUN mkdir -p /go/src/github.com/KamiQuasi/oc-golang-www
 WORKDIR /go/src/github.com/KamiQuasi/oc-golang-www
 
 COPY . /go/src/github.com/KamiQuasi/oc-golang-www
-RUN go-wrapper download && go-wrapper install
+RUN go install
 
-CMD ["go-wrapper", "run"]
+ENTRYPOINT /go/bin/oc-golang-www
+
+EXPOSE 8024
