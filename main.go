@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"html/template"
+	"io/ioutil"
 	"net/http"
 )
 
@@ -12,6 +13,21 @@ func main() {
 	// viper.BindEnv("key", "SERVING_KEY")
 	// viper.SetDefault("ip", "127.0.0.1")
 	// viper.SetDefault("port", "8080")
+
+	d1 := []byte(`<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Go-Web-Go</title>
+</head>
+<body>
+    <h1>Golang OpenShift Container Platform Storage Test</h1>
+</body>
+</html>`)
+	err = ioutil.WriteFile("/tmp/home.html", d1, 0644)
+	if err != nil {
+		panic(err)
+	}
 
 	http.HandleFunc("/", home)
 
@@ -25,6 +41,6 @@ func main() {
 }
 
 func home(w http.ResponseWriter, r *http.Request) {
-	t, _ := template.ParseFiles("templates/home.html")
+	t, _ := template.ParseFiles("/tmp/home.html")
 	t.Execute(w, nil)
 }

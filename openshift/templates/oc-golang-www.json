@@ -54,6 +54,22 @@
 			}
 		}
 	}, {
+		"kind": "PersistentVolumeClaim",
+		"apiVersion": "v1",
+		"metadata": {
+			"name": "go-web-go"
+		},
+		"spec": {
+			"resources": {
+				"requests": {
+					"storage": "1Gi"
+				}
+			},
+			"accessModes": [
+				"ReadWriteOnce"
+			]
+		}
+	}, {
 		"kind": "BuildConfig",
 		"apiVersion": "v1",
 		"metadata": {
@@ -135,9 +151,19 @@
 					"containers": [{
 						"name": "go-web-go",
 						"image": "go-web-go",
+                        "volumeMounts": [{
+							"mountPath": "/tmp",
+							"name": "go-web-go"
+						}],
 						"ports": [{
 							"containerPort": 8024
-						}]
+						}],
+                        "volumes": [{
+                            "name": "go-web-go",
+                            "persistentVolumeClaim": {
+                                "claimName": "go-web-go"
+                            }
+                        }]
 					}]
 				}
 			}
