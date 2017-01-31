@@ -24,7 +24,7 @@ func main() {
     <h1>Golang OpenShift Container Platform Storage Test</h1>
 </body>
 </html>`)
-	err = ioutil.WriteFile("/tmp/home.html", d1, 0644)
+	err = ioutil.WriteFile("/data/home.html", d1, 0644)
 	if err != nil {
 		panic(err)
 	}
@@ -41,6 +41,6 @@ func main() {
 }
 
 func home(w http.ResponseWriter, r *http.Request) {
-	t, _ := template.ParseFiles("/tmp/home.html")
+	t, _ := template.ParseFiles("/data/home.html")
 	t.Execute(w, nil)
 }

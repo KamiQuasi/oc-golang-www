@@ -152,7 +152,7 @@
 						"name": "go-web-go",
 						"image": "go-web-go",
                         "volumeMounts": [{
-							"mountPath": "/tmp",
+							"mountPath": "/data",
 							"name": "go-web-go"
 						}],
 						"ports": [{
