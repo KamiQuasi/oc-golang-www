@@ -105,9 +105,8 @@
 				}
 			},
 			"accessModes": [
-				"ReadWriteOnce"
-			],
-            "volumeName": "go-web-go"
+				"ReadWriteMany"
+			]
 		}
 	}, {
 		"kind": "DeploymentConfig",
@@ -120,7 +119,7 @@
 		},
 		"spec": {
 			"strategy": {
-				"type": "Rolling"
+				"type": "Recreate"
 			},
 			"replicas": 1,
 			"selector": {
