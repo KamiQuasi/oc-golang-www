@@ -54,22 +54,6 @@
 			}
 		}
 	}, {
-		"kind": "PersistentVolumeClaim",
-		"apiVersion": "v1",
-		"metadata": {
-			"name": "go-web-go"
-		},
-		"spec": {
-			"resources": {
-				"requests": {
-					"storage": "1Gi"
-				}
-			},
-			"accessModes": [
-				"ReadWriteOnce"
-			]
-		}
-	}, {
 		"kind": "BuildConfig",
 		"apiVersion": "v1",
 		"metadata": {
@@ -107,6 +91,23 @@
 			"postCommit": {
 				"script": "go test -v ./..."
 			}
+		}
+	}, {
+		"kind": "PersistentVolumeClaim",
+		"apiVersion": "v1",
+		"metadata": {
+			"name": "go-web-go"
+		},
+		"spec": {
+			"resources": {
+				"requests": {
+					"storage": "1Gi"
+				}
+			},
+			"accessModes": [
+				"ReadWriteOnce"
+			],
+            "volumeName": "go-web-go"
 		}
 	}, {
 		"kind": "DeploymentConfig",
@@ -157,14 +158,14 @@
 						}],
 						"ports": [{
 							"containerPort": 8024
-						}],
-                        "volumes": [{
-                            "name": "go-web-go",
-                            "persistentVolumeClaim": {
-                                "claimName": "go-web-go"
-                            }
-                        }]
-					}]
+						}]
+					}],
+                    "volumes": [{
+                        "name": "go-web-go",
+                        "persistentVolumeClaim": {
+                            "claimName": "go-web-go"
+                        }
+                    }]
 				}
 			}
 		}
